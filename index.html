@@ -7,13 +7,13 @@
 <meta name="description" content="Hoàn thành xác minh để nhận liên kết tải xuống miễn phí, an toàn và nhanh chóng.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 <!-- [ADSTERRA] Social Bar / Script 1 -->
 <script src="https://globalimmaturelunatic.com/86/06/6c/86066c6e4d3dd5175fce4ca61a11e00f.js"></script>
-
+<!-- [ADSTERRA] Popunder_1 & SocialBar_1 -->
+<script src="https://globalimmaturelunatic.com/9f/8f/8d/9f8f8de5d0baff0a533612a6bae753e5.js"></script>
+<script src="https://globalimmaturelunatic.com/ef/bb/dd/efbbdd61e7883a53a9ab965083b737d3.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
   --bg: #080810;
   --surface: #0f0f1a;
@@ -41,9 +41,7 @@
   --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
   --shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
-
 html { scroll-behavior: smooth; }
-
 body {
   background: var(--bg);
   color: var(--text);
@@ -56,7 +54,6 @@ body {
   position: relative;
   overflow-x: hidden;
 }
-
 /* ── Background ── */
 .bg-mesh {
   position: fixed; inset: 0;
@@ -81,7 +78,6 @@ body::before {
   background-image: radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px);
   background-size: 32px 32px; pointer-events: none; z-index: 0;
 }
-
 /* ================================================================
    ANTI-ADBLOCK OVERLAY
    ================================================================ */
@@ -94,12 +90,10 @@ body::before {
   animation: fadeOverlay 0.3s ease;
 }
 #adblock-overlay.show { display: flex; }
-
 @keyframes fadeOverlay {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
 .adblock-modal {
   background: var(--surface);
   border: 1px solid rgba(255,77,109,0.3);
@@ -112,18 +106,15 @@ body::before {
   box-shadow: 0 0 60px rgba(255,77,109,0.15), var(--shadow);
   animation: modalIn 0.35s cubic-bezier(0.4,0,0.2,1);
 }
-
 @keyframes modalIn {
   from { opacity: 0; transform: scale(0.92) translateY(20px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
-
 .adblock-modal::before {
   content: ''; position: absolute;
   top: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, transparent, var(--danger), transparent);
 }
-
 .adblock-icon {
   width: 80px; height: 80px;
   border-radius: 50%;
@@ -133,7 +124,6 @@ body::before {
   margin: 0 auto 24px;
   position: relative;
 }
-
 .adblock-icon::before,
 .adblock-icon::after {
   content: ''; position: absolute; inset: -8px;
@@ -142,31 +132,25 @@ body::before {
   animation: pulseRed 2s ease infinite;
 }
 .adblock-icon::after { animation-delay: 0.6s; }
-
 @keyframes pulseRed {
   0% { transform: scale(1); opacity: 0.6; }
   100% { transform: scale(1.5); opacity: 0; }
 }
-
 .adblock-icon svg {
   width: 40px; height: 40px;
   fill: none; stroke: var(--danger);
   stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
 }
-
 .adblock-title {
   font-size: 22px; font-weight: 900;
   letter-spacing: -0.4px; margin-bottom: 10px;
   color: var(--text);
 }
-
 .adblock-title span { color: var(--danger); }
-
 .adblock-desc {
   font-size: 14px; color: var(--text2);
   line-height: 1.7; margin-bottom: 28px;
 }
-
 .adblock-steps {
   background: var(--surface2);
   border: 1px solid var(--border2);
@@ -175,19 +159,16 @@ body::before {
   margin-bottom: 24px;
   text-align: left;
 }
-
 .adblock-steps-title {
   font-size: 12px; font-weight: 700;
   color: var(--text3); letter-spacing: 0.8px;
   text-transform: uppercase; margin-bottom: 14px;
 }
-
 .adblock-step-row {
   display: flex; align-items: flex-start;
   gap: 12px; margin-bottom: 12px;
 }
 .adblock-step-row:last-child { margin-bottom: 0; }
-
 .adblock-step-num {
   width: 24px; height: 24px; border-radius: 50%;
   background: rgba(255,77,109,0.15);
@@ -196,13 +177,10 @@ body::before {
   font-size: 11px; font-weight: 800; color: var(--danger);
   flex-shrink: 0; margin-top: 1px;
 }
-
 .adblock-step-text {
   font-size: 13px; color: var(--text2); line-height: 1.5;
 }
-
 .adblock-step-text strong { color: var(--text); }
-
 .btn-check-again {
   width: 100%; padding: 16px 24px;
   border: none; border-radius: var(--radius-sm);
@@ -219,18 +197,15 @@ body::before {
 }
 .btn-check-again:active { transform: translateY(0); }
 .btn-check-again svg { width: 16px; height: 16px; fill: white; }
-
 .adblock-note {
   font-size: 11px; color: var(--text3);
   margin-top: 12px; line-height: 1.5;
 }
-
 /* ── Layout ── */
 .page-wrap {
   width: 100%; max-width: 560px;
   position: relative; z-index: 1;
 }
-
 /* ── Logo ── */
 .logo {
   display: flex; align-items: center; justify-content: center;
@@ -256,7 +231,6 @@ body::before {
   background: linear-gradient(90deg, #fff 0%, var(--accent2) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-
 /* ── Card ── */
 .card {
   background: var(--surface); border: 1px solid var(--border2);
@@ -267,7 +241,6 @@ body::before {
   position: absolute; top: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, transparent 0%, var(--accent) 40%, var(--accent2) 60%, transparent 100%);
 }
-
 /* ── Header ── */
 .card-header { text-align: center; margin-bottom: 32px; }
 .lock-badge {
@@ -283,7 +256,6 @@ body::before {
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .card-sub { font-size: 14px; color: var(--text2); line-height: 1.6; }
-
 /* ── Progress ── */
 .progress-wrap { margin-bottom: 36px; }
 .progress-steps { display: flex; align-items: center; }
@@ -339,7 +311,6 @@ body::before {
   box-shadow: 0 0 8px var(--accent-glow);
 }
 .bar-pct { font-size: 12px; font-weight: 700; color: var(--text2); min-width: 32px; text-align: right; }
-
 /* ── Step Panels ── */
 .step-panel { display: none; animation: panelIn 0.35s cubic-bezier(0.4,0,0.2,1); }
 .step-panel.active { display: block; }
@@ -362,7 +333,6 @@ body::before {
 .info-content { flex: 1; }
 .info-title { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
 .info-text { font-size: 13px; color: var(--text2); line-height: 1.55; }
-
 /* ── Countdown ── */
 .countdown-wrap {
   display: none; align-items: center; gap: 14px;
@@ -387,7 +357,6 @@ body::before {
 .countdown-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
 .countdown-sub { font-size: 12px; color: var(--text2); }
 .countdown-sub strong { color: var(--accent2); }
-
 /* ── Buttons ── */
 .btn-primary {
   width: 100%; padding: 16px 24px; border: none; border-radius: var(--radius-sm);
@@ -409,7 +378,6 @@ body::before {
   gap: 8px; position: relative; z-index: 1;
 }
 .btn-inner svg { width: 16px; height: 16px; flex-shrink: 0; }
-
 /* ── Success ── */
 .success-screen { display: none; text-align: center; animation: panelIn 0.4s cubic-bezier(0.4,0,0.2,1); }
 .success-screen.active { display: block; }
@@ -466,7 +434,6 @@ body::before {
 .btn-download:active { transform: translateY(0); }
 .btn-download svg { width: 24px; height: 24px; flex-shrink: 0; }
 .download-note { display: block; text-align: center; font-size: 12px; color: var(--text3); margin-top: 12px; }
-
 /* ── Footer ── */
 .footer-security {
   display: flex; align-items: center; justify-content: center;
@@ -475,10 +442,8 @@ body::before {
 .sec-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text3); font-weight: 500; }
 .sec-item svg { width: 13px; height: 13px; fill: none; stroke: var(--text3); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .page-footer { text-align: center; margin-top: 28px; font-size: 11px; color: var(--text3); line-height: 1.6; }
-
 @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 .spin { animation: spin 0.9s linear infinite; }
-
 @media (max-width: 480px) {
   .card { padding: 28px 18px 24px; }
   .card-title { font-size: 22px; }
@@ -489,7 +454,6 @@ body::before {
 </style>
 </head>
 <body>
-
 <!-- ================================================================
      ANTI-ADBLOCK OVERLAY
      ================================================================ -->
@@ -506,7 +470,6 @@ body::before {
       Trang này sử dụng quảng cáo để duy trì dịch vụ tải xuống miễn phí.<br>
       Vui lòng <strong>tắt Ad Blocker</strong> để tiếp tục nhận link.
     </p>
-
     <div class="adblock-steps">
       <div class="adblock-steps-title">⚡ Cách tắt Ad Blocker</div>
       <div class="adblock-step-row">
@@ -522,7 +485,6 @@ body::before {
         <div class="adblock-step-text"><strong>Tải lại trang</strong> (F5) hoặc nhấn nút bên dưới để kiểm tra lại</div>
       </div>
     </div>
-
     <button class="btn-check-again" onclick="checkAdblock()">
       <svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
       Tôi đã tắt — Kiểm tra lại
@@ -530,9 +492,7 @@ body::before {
     <p class="adblock-note">🔒 Chúng tôi không lưu trữ thông tin cá nhân. Quảng cáo giúp duy trì server miễn phí.</p>
   </div>
 </div>
-
 <div class="bg-mesh" aria-hidden="true"></div>
-
 <svg width="0" height="0" style="position:absolute">
   <defs>
     <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -541,9 +501,7 @@ body::before {
     </linearGradient>
   </defs>
 </svg>
-
 <div class="page-wrap">
-
   <!-- Logo -->
   <div class="logo">
     <div class="logo-mark">
@@ -555,11 +513,9 @@ body::before {
     </div>
     <span class="logo-name">UnlockDL</span>
   </div>
-
   <!-- Card -->
   <div class="card" id="mainCard">
     <div class="card-top-bar"></div>
-
     <div class="card-header">
       <div class="lock-badge">
         <svg viewBox="0 0 24 24"><path d="M19 11H5a2 2 0 00-2 2v7a2 2 0 002 2h14a2 2 0 002-2v-7a2 2 0 00-2-2zM7 11V7a5 5 0 0110 0v4"/></svg>
@@ -568,7 +524,6 @@ body::before {
       <h1 class="card-title">Mở Khóa <span>Link Tải Xuống</span></h1>
       <p class="card-sub">Hoàn thành 5 bước xác minh đơn giản để nhận file miễn phí.</p>
     </div>
-
     <!-- Progress Steps -->
     <div class="progress-wrap">
       <div class="progress-steps" id="progressSteps">
@@ -604,7 +559,6 @@ body::before {
         <div class="bar-pct" id="barPct">0%</div>
       </div>
     </div>
-
     <!-- Step 1 -->
     <div class="step-panel" id="panel1">
       <div class="panel-header">
@@ -636,7 +590,6 @@ body::before {
         </span>
       </button>
     </div>
-
     <!-- Step 2 -->
     <div class="step-panel" id="panel2">
       <div class="panel-header">
@@ -668,7 +621,6 @@ body::before {
         </span>
       </button>
     </div>
-
     <!-- Step 3 -->
     <div class="step-panel" id="panel3">
       <div class="panel-header">
@@ -700,7 +652,6 @@ body::before {
         </span>
       </button>
     </div>
-
     <!-- Step 4 -->
     <div class="step-panel" id="panel4">
       <div class="panel-header">
@@ -732,7 +683,6 @@ body::before {
         </span>
       </button>
     </div>
-
     <!-- Step 5 -->
     <div class="step-panel" id="panel5">
       <div class="panel-header">
@@ -764,7 +714,6 @@ body::before {
         </span>
       </button>
     </div>
-
     <!-- Success -->
     <div class="success-screen" id="successPanel">
       <div class="success-anim">
@@ -802,7 +751,11 @@ body::before {
       </a>
       <span class="download-note">File đã sẵn sàng · Tải xuống miễn phí · Không cần đăng nhập</span>
     </div>
-
+    <!-- Native Banner Ad -->
+    <div style="margin: 24px 0 12px; display: flex; justify-content: center; width: 100%;">
+      <div id="container-1157b55461c7cea22e9fd482dbfb0a44" style="width: 100%; min-height: 80px;"></div>
+    </div>
+    <script async="async" data-cfasync="false" src="https://globalimmaturelunatic.com/1157b55461c7cea22e9fd482dbfb0a44/invoke.js"></script>
     <div class="footer-security">
       <div class="sec-item">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -822,34 +775,27 @@ body::before {
       </div>
     </div>
   </div>
-
   <p class="page-footer">© 2025 UnlockDL · Không lưu trữ thông tin cá nhân</p>
 </div>
-
 <script>
 // ================================================================
 // ⚙️ CẤU HÌNH
 // ================================================================
 const CONFIG = {
   WAIT_SECONDS: 5,
-
-  // 2 direct links xen kẽ nhau theo từng bước (tối đa impression)
   AD_LINKS: [
-    'https://globalimmaturelunatic.com/xgtge76dn9?key=c1b7efb9d1f679b94395cb79a8b0b6e3',  // Bước 1
-    'https://globalimmaturelunatic.com/w2g7mth1h?key=778090d735fd9fdd2c72c9e4e06cb95c',   // Bước 2
-    'https://globalimmaturelunatic.com/xgtge76dn9?key=c1b7efb9d1f679b94395cb79a8b0b6e3',  // Bước 3
+    'https://globalimmaturelunatic.com/s5bpywu4?key=cd95a4610e6369e619b7dc96bbf08389',  // Bước 1 (Smartlink_1)
+    'https://globalimmaturelunatic.com/s5bpywu4?key=cd95a4610e6369e619b7dc96bbf08389',  // Bước 2 (Smartlink_1)
+    'https://globalimmaturelunatic.com/s5bpywu4?key=cd95a4610e6369e619b7dc96bbf08389',  // Bước 3 (Smartlink_1)
     '',                                                                                   // Bước 4 (Tải bằng Link4M)
-    'https://globalimmaturelunatic.com/xgtge76dn9?key=c1b7efb9d1f679b94395cb79a8b0b6e3',  // Bước 5
+    'https://globalimmaturelunatic.com/s5bpywu4?key=cd95a4610e6369e619b7dc96bbf08389',  // Bước 5 (Smartlink_1)
   ],
-
   SAVE_PROGRESS: true,
   STORAGE_KEY: 'unlockdl_v3',
   LINK4M_API_KEY: '68fcb1cfd51cdd02835428f7',
-
   // Thời gian (ms) chờ trước khi check adblock lại (sau khi user bấm "Kiểm tra lại")
   ADBLOCK_RECHECK_DELAY: 1200,
 };
-
 // Check if returning from Link4M (Step 4 completed)
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.has('step') && urlParams.get('step') === '5') {
@@ -860,12 +806,10 @@ if (urlParams.has('step') && urlParams.get('step') === '5') {
   const cleanUrl = window.location.origin + window.location.pathname;
   window.history.replaceState({}, document.title, cleanUrl);
 }
-
 // ================================================================
 // ANTI-ADBLOCK ENGINE
 // ================================================================
 let adblockDetected = false;
-
 function detectAdblock() {
   return new Promise((resolve) => {
     // Phương pháp 1: Tạo bait element (tên class bị adblock chặn)
@@ -874,7 +818,6 @@ function detectAdblock() {
     bait.setAttribute('id', 'ad-detect-bait');
     bait.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;';
     document.body.appendChild(bait);
-
     // Phương pháp 2: Kiểm tra sau một tick để CSS adblock kịp ẩn element
     setTimeout(() => {
       const el = document.getElementById('ad-detect-bait');
@@ -884,17 +827,14 @@ function detectAdblock() {
         || el.style.display === 'none'
         || el.style.visibility === 'hidden'
         || window.getComputedStyle(el).display === 'none';
-
       if (el) el.remove();
       resolve(blocked);
     }, 150);
   });
 }
-
 async function checkAdblock() {
   const overlay = document.getElementById('adblock-overlay');
   const btn = document.querySelector('.btn-check-again');
-
   // Loading state
   if (btn) {
     btn.disabled = true;
@@ -905,13 +845,10 @@ async function checkAdblock() {
       Đang kiểm tra...
     `;
   }
-
   // Chờ một chút để adblock kịp xử lý sau khi user tắt
   await new Promise(r => setTimeout(r, CONFIG.ADBLOCK_RECHECK_DELAY));
-
   const blocked = await detectAdblock();
   adblockDetected = blocked;
-
   if (blocked) {
     // Vẫn còn adblock
     if (btn) {
@@ -941,7 +878,6 @@ async function checkAdblock() {
     }
   }
 }
-
 // Thêm animation shake
 const shakeStyle = document.createElement('style');
 shakeStyle.textContent = `
@@ -956,7 +892,6 @@ shakeStyle.textContent = `
   }
 `;
 document.head.appendChild(shakeStyle);
-
 // Chạy detect khi trang load xong
 window.addEventListener('load', async () => {
   const blocked = await detectAdblock();
@@ -965,14 +900,11 @@ window.addEventListener('load', async () => {
     document.getElementById('adblock-overlay').classList.add('show');
   }
 });
-
 // ================================================================
 // MAIN LOGIC
 // ================================================================
 const CIRCUMFERENCE = 2 * Math.PI * 19;
-
 let state = initState();
-
 function initState() {
   if (CONFIG.SAVE_PROGRESS) {
     try {
@@ -985,24 +917,20 @@ function initState() {
   }
   return { currentStep: 1, completed: [] };
 }
-
 function saveState() {
   if (!CONFIG.SAVE_PROGRESS) return;
   try { localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
 }
-
 function init() {
   renderProgress();
   showPanel(state.currentStep);
 }
-
 function renderProgress() {
   const totalSteps = 5;
   const done = state.completed.length;
   const pct = Math.round((done / totalSteps) * 100);
   document.getElementById('barFill').style.width = pct + '%';
   document.getElementById('barPct').textContent = pct + '%';
-
   for (let i = 1; i <= totalSteps; i++) {
     const dot  = document.getElementById('dot' + i);
     const lbl  = document.getElementById('lbl' + i);
@@ -1010,7 +938,6 @@ function renderProgress() {
     dot.className = 'step-dot';
     lbl.className = 'step-label';
     if (conn) conn.className = 'step-connector';
-
     if (state.completed.includes(i)) {
       dot.className = 'step-dot done';
       dot.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
@@ -1028,7 +955,6 @@ function renderProgress() {
     }
   }
 }
-
 function showPanel(step) {
   for (let i = 1; i <= 5; i++) {
     document.getElementById('panel' + i).classList.remove('active');
@@ -1040,17 +966,14 @@ function showPanel(step) {
     document.getElementById('panel' + step).classList.add('active');
   }
 }
-
 function handleStep(step) {
   // Chặn nếu vẫn còn adblock
   if (adblockDetected) {
     document.getElementById('adblock-overlay').classList.add('show');
     return;
   }
-
   const btn = document.getElementById('btn' + step);
   btn.disabled = true;
-
   // Step 4: Link4M API redirection
   if (step === 4) {
     // Dev mode helper: Skip Link4M when running offline on file:// protocol
@@ -1063,18 +986,15 @@ function handleStep(step) {
       showPanel(5);
       return;
     }
-
     btn.querySelector('.btn-inner').innerHTML = `
       <svg class="spin" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" width="16" height="16">
         <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
       </svg>
       Đang khởi tạo link xác minh...
     `;
-
     const returnUrl = window.location.origin + window.location.pathname + "?step=5";
     const apiEndpoint = `https://link4m.com/api?api=${CONFIG.LINK4M_API_KEY}&url=${encodeURIComponent(returnUrl)}`;
-    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(apiEndpoint)}`;
-
+    const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(apiEndpoint)}`;
     fetch(proxyUrl)
       .then(response => {
         if (!response.ok) {
@@ -1102,7 +1022,6 @@ function handleStep(step) {
       });
     return;
   }
-
   // Các bước Adsterra bình thường (1, 2, 3, 5)
   btn.querySelector('.btn-inner').innerHTML = `
     <svg class="spin" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" width="16" height="16">
@@ -1114,7 +1033,6 @@ function handleStep(step) {
   if (adUrl) window.open(adUrl, '_blank', 'noopener,noreferrer');
   setTimeout(() => startCountdown(step), 300);
 }
-
 function startCountdown(step) {
   const cw  = document.getElementById('cw' + step);
   const cf  = document.getElementById('cf' + step);
@@ -1125,7 +1043,6 @@ function startCountdown(step) {
   let remaining = CONFIG.WAIT_SECONDS;
   cf.style.strokeDasharray  = CIRCUMFERENCE;
   cf.style.strokeDashoffset = 0;
-
   const tick = setInterval(() => {
     remaining--;
     cn.textContent = remaining;
@@ -1138,7 +1055,6 @@ function startCountdown(step) {
     }
   }, 1000);
 }
-
 function onCountdownEnd(step, btn, cw) {
   cw.classList.remove('visible');
   state.completed.push(step);
@@ -1155,12 +1071,9 @@ function onCountdownEnd(step, btn, cw) {
     renderProgress();
   }, 600);
 }
-
 init();
 </script>
-
 <!-- [ADSTERRA] Script 2 -->
 <script src="https://globalimmaturelunatic.com/91/e2/97/91e297ea0b233d10e7c83404c5db6cf1.js"></script>
-
 </body>
 </html>

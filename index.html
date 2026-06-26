@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unlock Download — Nhận Link Tải Xuống</title>
+<meta name="description" content="Hoàn thành xác minh để nhận liên kết tải xuống miễn phí, an toàn và nhanh chóng.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- [ADSTERRA] Social Bar / Script 1 -->
+<script src="https://globalimmaturelunatic.com/86/06/6c/86066c6e4d3dd5175fce4ca61a11e00f.js"></script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #080810;
+  --surface: #0f0f1a;
+  --surface2: #16162a;
+  --surface3: #1e1e38;
+  --border: rgba(255,255,255,0.06);
+  --border2: rgba(255,255,255,0.12);
+  --accent: #7c6dff;
+  --accent2: #b8a4ff;
+  --accent-glow: rgba(124,109,255,0.25);
+  --success: #00e5a0;
+  --success2: #00c48a;
+  --success-bg: rgba(0,229,160,0.1);
+  --success-glow: rgba(0,229,160,0.25);
+  --danger: #ff4d6d;
+  --danger-bg: rgba(255,77,109,0.1);
+  --danger-glow: rgba(255,77,109,0.3);
+  --warning: #fbbf24;
+  --text: #eeeeff;
+  --text2: #9090b8;
+  --text3: #50508a;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+  --shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 40px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ── Background ── */
+.bg-mesh {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.bg-mesh::before {
+  content: ''; position: absolute;
+  top: -20%; left: 30%; width: 600px; height: 600px;
+  background: radial-gradient(ellipse, rgba(124,109,255,0.10) 0%, transparent 65%);
+  animation: float1 12s ease-in-out infinite;
+}
+.bg-mesh::after {
+  content: ''; position: absolute;
+  bottom: -10%; right: 20%; width: 500px; height: 500px;
+  background: radial-gradient(ellipse, rgba(0,229,160,0.07) 0%, transparent 65%);
+  animation: float2 15s ease-in-out infinite;
+}
+@keyframes float1 { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-30px) scale(1.05)} }
+@keyframes float2 { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(20px) scale(0.95)} }
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 32px 32px; pointer-events: none; z-index: 0;
+}
+
+/* ================================================================
+   ANTI-ADBLOCK OVERLAY
+   ================================================================ */
+#adblock-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(8,8,16,0.95);
+  backdrop-filter: blur(16px);
+  align-items: center; justify-content: center;
+  animation: fadeOverlay 0.3s ease;
+}
+#adblock-overlay.show { display: flex; }
+
+@keyframes fadeOverlay {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.adblock-modal {
+  background: var(--surface);
+  border: 1px solid rgba(255,77,109,0.3);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  max-width: 480px;
+  width: calc(100% - 32px);
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 60px rgba(255,77,109,0.15), var(--shadow);
+  animation: modalIn 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.adblock-modal::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--danger), transparent);
+}
+
+.adblock-icon {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--danger-bg);
+  border: 2px solid rgba(255,77,109,0.3);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+  position: relative;
+}
+
+.adblock-icon::before,
+.adblock-icon::after {
+  content: ''; position: absolute; inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,77,109,0.2);
+  animation: pulseRed 2s ease infinite;
+}
+.adblock-icon::after { animation-delay: 0.6s; }
+
+@keyframes pulseRed {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.adblock-icon svg {
+  width: 40px; height: 40px;
+  fill: none; stroke: var(--danger);
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.adblock-title {
+  font-size: 22px; font-weight: 900;
+  letter-spacing: -0.4px; margin-bottom: 10px;
+  color: var(--text);
+}
+
+.adblock-title span { color: var(--danger); }
+
+.adblock-desc {
+  font-size: 14px; color: var(--text2);
+  line-height: 1.7; margin-bottom: 28px;
+}
+
+.adblock-steps {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.adblock-steps-title {
+  font-size: 12px; font-weight: 700;
+  color: var(--text3); letter-spacing: 0.8px;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+
+.adblock-step-row {
+  display: flex; align-items: flex-start;
+  gap: 12px; margin-bottom: 12px;
+}
+.adblock-step-row:last-child { margin-bottom: 0; }
+
+.adblock-step-num {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(255,77,109,0.15);
+  border: 1px solid rgba(255,77,109,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800; color: var(--danger);
+  flex-shrink: 0; margin-top: 1px;
+}
+
+.adblock-step-text {
+  font-size: 13px; color: var(--text2); line-height: 1.5;
+}
+
+.adblock-step-text strong { color: var(--text); }
+
+.btn-check-again {
+  width: 100%; padding: 16px 24px;
+  border: none; border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--danger), #c0392b);
+  color: white; font-family: inherit;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  transition: all var(--transition);
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; letter-spacing: 0.2px;
+}
+.btn-check-again:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px var(--danger-glow);
+}
+.btn-check-again:active { transform: translateY(0); }
+.btn-check-again svg { width: 16px; height: 16px; fill: white; }
+
+.adblock-note {
+  font-size: 11px; color: var(--text3);
+  margin-top: 12px; line-height: 1.5;
+}
+
+/* ── Layout ── */
+.page-wrap {
+  width: 100%; max-width: 560px;
+  position: relative; z-index: 1;
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; padding: 28px 0 32px;
+}
+.logo-mark {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #a78bfa);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px var(--accent-glow);
+  position: relative; overflow: hidden;
+}
+.logo-mark::after {
+  content: ''; position: absolute; top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: sheen 4s ease infinite;
+}
+@keyframes sheen { 0%{left:-100%} 30%,100%{left:150%} }
+.logo-mark svg { width: 22px; height: 22px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.logo-name {
+  font-size: 22px; font-weight: 900; letter-spacing: -0.5px;
+  background: linear-gradient(90deg, #fff 0%, var(--accent2) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--surface); border: 1px solid var(--border2);
+  border-radius: var(--radius); padding: 36px 32px 32px;
+  position: relative; overflow: hidden; box-shadow: var(--shadow);
+}
+.card-top-bar {
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 40%, var(--accent2) 60%, transparent 100%);
+}
+
+/* ── Header ── */
+.card-header { text-align: center; margin-bottom: 32px; }
+.lock-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(124,109,255,0.12); border: 1px solid rgba(124,109,255,0.25);
+  border-radius: 100px; padding: 5px 14px; font-size: 11px; font-weight: 600;
+  color: var(--accent2); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px;
+}
+.lock-badge svg { width: 12px; height: 12px; fill: currentColor; }
+.card-title { font-size: 28px; font-weight: 900; letter-spacing: -0.8px; margin-bottom: 8px; line-height: 1.2; }
+.card-title span {
+  background: linear-gradient(135deg, var(--accent2), #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.card-sub { font-size: 14px; color: var(--text2); line-height: 1.6; }
+
+/* ── Progress ── */
+.progress-wrap { margin-bottom: 36px; }
+.progress-steps { display: flex; align-items: center; }
+.step-item { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.step-connector {
+  flex: 1; height: 2px; background: var(--surface3);
+  position: relative; bottom: 12px; border-radius: 2px; overflow: hidden;
+  transition: background var(--transition);
+}
+.step-connector.done { background: var(--success2); }
+.step-connector.active::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, var(--success2), var(--accent));
+  animation: progressFill 0.5s ease forwards;
+}
+@keyframes progressFill { from{transform:scaleX(0);transform-origin:left} to{transform:scaleX(1);transform-origin:left} }
+.step-dot {
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 2px solid var(--surface3); background: var(--surface2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: var(--text3);
+  transition: all var(--transition); position: relative; z-index: 1; flex-shrink: 0;
+}
+.step-dot.active {
+  border-color: var(--accent); background: rgba(124,109,255,0.15); color: var(--accent2);
+  box-shadow: 0 0 0 5px rgba(124,109,255,0.1), 0 0 20px rgba(124,109,255,0.2);
+}
+.step-dot.active::before {
+  content: ''; position: absolute; inset: -4px; border-radius: 50%;
+  border: 1px solid rgba(124,109,255,0.2); animation: pulse-ring 2s ease infinite;
+}
+@keyframes pulse-ring { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.15);opacity:0} }
+.step-dot.done {
+  border-color: var(--success); background: var(--success-bg);
+  color: transparent; box-shadow: 0 0 0 4px rgba(0,229,160,0.08);
+}
+.step-dot.done svg {
+  display: block; width: 16px; height: 16px;
+  fill: none; stroke: var(--success); stroke-width: 2.5;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.step-label {
+  font-size: 10px; color: var(--text3); margin-top: 7px; font-weight: 600;
+  letter-spacing: 0.3px; transition: color var(--transition); white-space: nowrap;
+}
+.step-label.active { color: var(--accent2); }
+.step-label.done   { color: var(--success); }
+.overall-progress { margin-top: 16px; display: flex; align-items: center; gap: 10px; }
+.bar-track { flex: 1; height: 4px; background: var(--surface3); border-radius: 100px; overflow: hidden; }
+.bar-fill {
+  height: 100%; background: linear-gradient(90deg, var(--accent), var(--success));
+  border-radius: 100px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+.bar-pct { font-size: 12px; font-weight: 700; color: var(--text2); min-width: 32px; text-align: right; }
+
+/* ── Step Panels ── */
+.step-panel { display: none; animation: panelIn 0.35s cubic-bezier(0.4,0,0.2,1); }
+.step-panel.active { display: block; }
+@keyframes panelIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.panel-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.step-number-tag {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: var(--radius-xs);
+  background: rgba(124,109,255,0.15); border: 1px solid rgba(124,109,255,0.3);
+  font-size: 12px; font-weight: 800; color: var(--accent2); flex-shrink: 0;
+}
+.panel-title { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
+.panel-desc { font-size: 14px; color: var(--text2); line-height: 1.65; margin-bottom: 20px; }
+.info-box {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 16px; border-radius: var(--radius-sm);
+  background: var(--surface2); border: 1px solid var(--border2); margin-bottom: 20px;
+}
+.info-icon { font-size: 20px; flex-shrink: 0; line-height: 1; margin-top: 1px; }
+.info-content { flex: 1; }
+.info-title { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.info-text { font-size: 13px; color: var(--text2); line-height: 1.55; }
+
+/* ── Countdown ── */
+.countdown-wrap {
+  display: none; align-items: center; gap: 14px;
+  padding: 16px 18px; background: var(--surface2);
+  border: 1px solid rgba(124,109,255,0.2); border-radius: var(--radius-sm);
+  margin-bottom: 18px; animation: panelIn 0.3s ease;
+}
+.countdown-wrap.visible { display: flex; }
+.countdown-ring { position: relative; width: 50px; height: 50px; flex-shrink: 0; }
+.countdown-ring svg { width: 50px; height: 50px; transform: rotate(-90deg); }
+.countdown-ring .c-track { fill: none; stroke: var(--surface3); stroke-width: 3.5; }
+.countdown-ring .c-fill {
+  fill: none; stroke: url(#grad1); stroke-width: 3.5;
+  stroke-linecap: round; stroke-dasharray: 122; stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
+}
+.countdown-num {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800; color: var(--accent2);
+}
+.countdown-info { flex: 1; }
+.countdown-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.countdown-sub { font-size: 12px; color: var(--text2); }
+.countdown-sub strong { color: var(--accent2); }
+
+/* ── Buttons ── */
+.btn-primary {
+  width: 100%; padding: 16px 24px; border: none; border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent), #9b59f5);
+  color: white; font-family: inherit; font-size: 15px; font-weight: 700;
+  cursor: pointer; transition: all var(--transition); position: relative; overflow: hidden; letter-spacing: 0.2px;
+}
+.btn-primary::before {
+  content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s ease;
+}
+.btn-primary:hover::before { left: 150%; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px var(--accent-glow); }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-inner {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; position: relative; z-index: 1;
+}
+.btn-inner svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ── Success ── */
+.success-screen { display: none; text-align: center; animation: panelIn 0.4s cubic-bezier(0.4,0,0.2,1); }
+.success-screen.active { display: block; }
+.success-anim { position: relative; width: 90px; height: 90px; margin: 0 auto 24px; }
+.success-anim::before,.success-anim::after {
+  content: ''; position: absolute; inset: -8px; border-radius: 50%;
+  border: 1px solid rgba(0,229,160,0.3); animation: expandRing 2s ease infinite;
+}
+.success-anim::after { animation-delay: 0.7s; }
+.success-circle {
+  width: 90px; height: 90px; border-radius: 50%; background: var(--success-bg);
+  border: 2px solid rgba(0,229,160,0.35); display: flex; align-items: center;
+  justify-content: center; position: relative; z-index: 1;
+}
+.success-circle svg {
+  width: 44px; height: 44px; fill: none; stroke: var(--success);
+  stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 60; stroke-dashoffset: 60;
+  animation: drawCheck 0.5s ease 0.2s forwards;
+}
+@keyframes drawCheck { to{stroke-dashoffset:0} }
+@keyframes expandRing { 0%{transform:scale(1);opacity:0.5} 100%{transform:scale(1.5);opacity:0} }
+.success-title { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 8px; }
+.success-sub {
+  font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 24px;
+  max-width: 340px; margin-left: auto; margin-right: auto;
+}
+.badge-row { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 5px; padding: 5px 12px;
+  border-radius: 100px; font-size: 11px; font-weight: 600;
+  background: var(--success-bg); color: var(--success); border: 1px solid rgba(0,229,160,0.2);
+}
+.badge svg {
+  width: 12px; height: 12px; fill: none; stroke: currentColor;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.btn-download {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 20px 24px; border-radius: var(--radius-sm); border: none;
+  background: linear-gradient(135deg, var(--success), var(--success2));
+  color: white; font-family: inherit; font-size: 17px; font-weight: 800;
+  cursor: pointer; text-decoration: none; letter-spacing: 0.2px;
+  position: relative; overflow: hidden; transition: all var(--transition);
+  box-shadow: 0 0 40px rgba(0,229,160,0.2);
+}
+.btn-download::before {
+  content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  animation: sheen2 3s ease infinite;
+}
+@keyframes sheen2 { 0%{left:-100%} 40%,100%{left:150%} }
+.btn-download:hover { transform: translateY(-3px); box-shadow: 0 16px 40px var(--success-glow); }
+.btn-download:active { transform: translateY(0); }
+.btn-download svg { width: 24px; height: 24px; flex-shrink: 0; }
+.download-note { display: block; text-align: center; font-size: 12px; color: var(--text3); margin-top: 12px; }
+
+/* ── Footer ── */
+.footer-security {
+  display: flex; align-items: center; justify-content: center;
+  gap: 20px; flex-wrap: wrap; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border);
+}
+.sec-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text3); font-weight: 500; }
+.sec-item svg { width: 13px; height: 13px; fill: none; stroke: var(--text3); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.page-footer { text-align: center; margin-top: 28px; font-size: 11px; color: var(--text3); line-height: 1.6; }
+
+@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+.spin { animation: spin 0.9s linear infinite; }
+
+@media (max-width: 480px) {
+  .card { padding: 28px 18px 24px; }
+  .card-title { font-size: 22px; }
+  .step-label { font-size: 9px; }
+  .step-dot { width: 32px; height: 32px; font-size: 11px; }
+  .adblock-modal { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     ANTI-ADBLOCK OVERLAY
+     ================================================================ -->
+<div id="adblock-overlay" role="dialog" aria-modal="true" aria-labelledby="adblock-title">
+  <div class="adblock-modal">
+    <div class="adblock-icon">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+      </svg>
+    </div>
+    <h2 class="adblock-title" id="adblock-title">Phát hiện <span>Ad Blocker!</span></h2>
+    <p class="adblock-desc">
+      Trang này sử dụng quảng cáo để duy trì dịch vụ tải xuống miễn phí.<br>
+      Vui lòng <strong>tắt Ad Blocker</strong> để tiếp tục nhận link.
+    </p>
+
+    <div class="adblock-steps">
+      <div class="adblock-steps-title">⚡ Cách tắt Ad Blocker</div>
+      <div class="adblock-step-row">
+        <div class="adblock-step-num">1</div>
+        <div class="adblock-step-text">Nhấp vào <strong>biểu tượng Extension</strong> trên thanh địa chỉ trình duyệt</div>
+      </div>
+      <div class="adblock-step-row">
+        <div class="adblock-step-num">2</div>
+        <div class="adblock-step-text">Tìm <strong>AdBlock / uBlock Origin / Adblock Plus</strong> và tắt nó đi</div>
+      </div>
+      <div class="adblock-step-row">
+        <div class="adblock-step-num">3</div>
+        <div class="adblock-step-text"><strong>Tải lại trang</strong> (F5) hoặc nhấn nút bên dưới để kiểm tra lại</div>
+      </div>
+    </div>
+
+    <button class="btn-check-again" onclick="checkAdblock()">
+      <svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+      Tôi đã tắt — Kiểm tra lại
+    </button>
+    <p class="adblock-note">🔒 Chúng tôi không lưu trữ thông tin cá nhân. Quảng cáo giúp duy trì server miễn phí.</p>
+  </div>
+</div>
+
+<div class="bg-mesh" aria-hidden="true"></div>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c6dff"/>
+      <stop offset="100%" style="stop-color:#00e5a0"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="page-wrap">
+
+  <!-- Logo -->
+  <div class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24">
+        <polyline points="8 17 12 21 16 17"/>
+        <line x1="12" y1="12" x2="12" y2="21"/>
+        <path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"/>
+      </svg>
+    </div>
+    <span class="logo-name">UnlockDL</span>
+  </div>
+
+  <!-- Card -->
+  <div class="card" id="mainCard">
+    <div class="card-top-bar"></div>
+
+    <div class="card-header">
+      <div class="lock-badge">
+        <svg viewBox="0 0 24 24"><path d="M19 11H5a2 2 0 00-2 2v7a2 2 0 002 2h14a2 2 0 002-2v-7a2 2 0 00-2-2zM7 11V7a5 5 0 0110 0v4"/></svg>
+        Bảo vệ liên kết
+      </div>
+      <h1 class="card-title">Mở Khóa <span>Link Tải Xuống</span></h1>
+      <p class="card-sub">Hoàn thành 5 bước xác minh đơn giản để nhận file miễn phí.</p>
+    </div>
+
+    <!-- Progress Steps -->
+    <div class="progress-wrap">
+      <div class="progress-steps" id="progressSteps">
+        <div class="step-item">
+          <div class="step-dot" id="dot1"><span>1</span></div>
+          <div class="step-label" id="lbl1">Bước 1</div>
+        </div>
+        <div class="step-connector" id="conn1"></div>
+        <div class="step-item">
+          <div class="step-dot" id="dot2"><span>2</span></div>
+          <div class="step-label" id="lbl2">Bước 2</div>
+        </div>
+        <div class="step-connector" id="conn2"></div>
+        <div class="step-item">
+          <div class="step-dot" id="dot3"><span>3</span></div>
+          <div class="step-label" id="lbl3">Bước 3</div>
+        </div>
+        <div class="step-connector" id="conn3"></div>
+        <div class="step-item">
+          <div class="step-dot" id="dot4"><span>4</span></div>
+          <div class="step-label" id="lbl4">Bước 4</div>
+        </div>
+        <div class="step-connector" id="conn4"></div>
+        <div class="step-item">
+          <div class="step-dot" id="dot5"><span>5</span></div>
+          <div class="step-label" id="lbl5">Bước 5</div>
+        </div>
+      </div>
+      <div class="overall-progress">
+        <div class="bar-track">
+          <div class="bar-fill" id="barFill" style="width:0%"></div>
+        </div>
+        <div class="bar-pct" id="barPct">0%</div>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-panel" id="panel1">
+      <div class="panel-header">
+        <div class="step-number-tag">1</div>
+        <p class="panel-title">Xác minh lần đầu</p>
+      </div>
+      <p class="panel-desc">Nhấn Continue để mở trang xác minh trong tab mới, sau đó chờ đếm ngược để tiếp tục.</p>
+      <div class="info-box">
+        <span class="info-icon">💡</span>
+        <div class="info-content">
+          <div class="info-title">Lưu ý quan trọng</div>
+          <div class="info-text">Liên kết xác minh sẽ mở trong tab mới. Vui lòng không đóng trang này trong khi đếm ngược.</div>
+        </div>
+      </div>
+      <div class="countdown-wrap" id="cw1">
+        <div class="countdown-ring">
+          <svg viewBox="0 0 50 50"><circle class="c-track" cx="25" cy="25" r="19"/><circle class="c-fill" id="cf1" cx="25" cy="25" r="19"/></svg>
+          <div class="countdown-num" id="cn1">5</div>
+        </div>
+        <div class="countdown-info">
+          <div class="countdown-title">Đang xác minh...</div>
+          <div class="countdown-sub">Vui lòng chờ <strong id="cs1">5</strong> giây</div>
+        </div>
+      </div>
+      <button class="btn-primary" id="btn1" onclick="handleStep(1)">
+        <span class="btn-inner">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg>
+          Continue — Bước 1/5
+        </span>
+      </button>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-panel" id="panel2">
+      <div class="panel-header">
+        <div class="step-number-tag">2</div>
+        <p class="panel-title">Xác minh lần hai</p>
+      </div>
+      <p class="panel-desc">Tuyệt vời! Bạn đã hoàn thành bước 1. Tiếp tục bước xác minh thứ hai để tiến gần hơn.</p>
+      <div class="info-box">
+        <span class="info-icon">🔐</span>
+        <div class="info-content">
+          <div class="info-title">Đang kiểm tra thiết bị</div>
+          <div class="info-text">Hệ thống đang xác thực thiết bị của bạn. Quá trình này tự động và hoàn toàn an toàn.</div>
+        </div>
+      </div>
+      <div class="countdown-wrap" id="cw2">
+        <div class="countdown-ring">
+          <svg viewBox="0 0 50 50"><circle class="c-track" cx="25" cy="25" r="19"/><circle class="c-fill" id="cf2" cx="25" cy="25" r="19"/></svg>
+          <div class="countdown-num" id="cn2">5</div>
+        </div>
+        <div class="countdown-info">
+          <div class="countdown-title">Đang xác minh...</div>
+          <div class="countdown-sub">Vui lòng chờ <strong id="cs2">5</strong> giây</div>
+        </div>
+      </div>
+      <button class="btn-primary" id="btn2" onclick="handleStep(2)">
+        <span class="btn-inner">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg>
+          Continue — Bước 2/5
+        </span>
+      </button>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-panel" id="panel3">
+      <div class="panel-header">
+        <div class="step-number-tag">3</div>
+        <p class="panel-title">Xác minh lần ba</p>
+      </div>
+      <p class="panel-desc">Đang đến đích rồi! Còn 2 bước nữa. Hãy hoàn thành xác minh để nhận quyền truy cập.</p>
+      <div class="info-box">
+        <span class="info-icon">⚡</span>
+        <div class="info-content">
+          <div class="info-title">Bảo vệ nội dung</div>
+          <div class="info-text">Xác minh giúp đảm bảo chỉ người dùng hợp lệ mới có thể tải file. Cảm ơn sự kiên nhẫn!</div>
+        </div>
+      </div>
+      <div class="countdown-wrap" id="cw3">
+        <div class="countdown-ring">
+          <svg viewBox="0 0 50 50"><circle class="c-track" cx="25" cy="25" r="19"/><circle class="c-fill" id="cf3" cx="25" cy="25" r="19"/></svg>
+          <div class="countdown-num" id="cn3">5</div>
+        </div>
+        <div class="countdown-info">
+          <div class="countdown-title">Đang xác minh...</div>
+          <div class="countdown-sub">Vui lòng chờ <strong id="cs3">5</strong> giây</div>
+        </div>
+      </div>
+      <button class="btn-primary" id="btn3" onclick="handleStep(3)">
+        <span class="btn-inner">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg>
+          Continue — Bước 3/5
+        </span>
+      </button>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-panel" id="panel4">
+      <div class="panel-header">
+        <div class="step-number-tag">4</div>
+        <p class="panel-title">Xác minh Link4M ⚡</p>
+      </div>
+      <p class="panel-desc">Gần xong rồi! Hãy hoàn thành thử thách trên hệ thống Link4M để tiến tới bước cuối cùng.</p>
+      <div class="info-box">
+        <span class="info-icon">🎯</span>
+        <div class="info-content">
+          <div class="info-title">Yêu cầu xác minh Link4M</div>
+          <div class="info-text">Nhấn Continue để chuyển sang hệ thống Link4M. Hoàn thành nhiệm vụ để được tự động quay lại đây.</div>
+        </div>
+      </div>
+      <div class="countdown-wrap" id="cw4">
+        <div class="countdown-ring">
+          <svg viewBox="0 0 50 50"><circle class="c-track" cx="25" cy="25" r="19"/><circle class="c-fill" id="cf4" cx="25" cy="25" r="19"/></svg>
+          <div class="countdown-num" id="cn4">5</div>
+        </div>
+        <div class="countdown-info">
+          <div class="countdown-title">Đang xác minh...</div>
+          <div class="countdown-sub">Vui lòng chờ <strong id="cs4">5</strong> giây</div>
+        </div>
+      </div>
+      <button class="btn-primary" id="btn4" onclick="handleStep(4)">
+        <span class="btn-inner">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg>
+          Continue — Bước 4/5
+        </span>
+      </button>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step-panel" id="panel5">
+      <div class="panel-header">
+        <div class="step-number-tag">5</div>
+        <p class="panel-title">Bước cuối cùng! 🎉</p>
+      </div>
+      <p class="panel-desc">Chỉ còn một bước nữa! Sau khi hoàn thành, nút Download sẽ ngay lập tức được mở khóa.</p>
+      <div class="info-box">
+        <span class="info-icon">🏁</span>
+        <div class="info-content">
+          <div class="info-title">Bước xác minh cuối</div>
+          <div class="info-text">Đây là bước cuối cùng. File của bạn đã sẵn sàng và sẽ được mở khóa ngay sau khi hoàn thành!</div>
+        </div>
+      </div>
+      <div class="countdown-wrap" id="cw5">
+        <div class="countdown-ring">
+          <svg viewBox="0 0 50 50"><circle class="c-track" cx="25" cy="25" r="19"/><circle class="c-fill" id="cf5" cx="25" cy="25" r="19"/></svg>
+          <div class="countdown-num" id="cn5">5</div>
+        </div>
+        <div class="countdown-info">
+          <div class="countdown-title">Bước cuối cùng...</div>
+          <div class="countdown-sub">Vui lòng chờ <strong id="cs5">5</strong> giây</div>
+        </div>
+      </div>
+      <button class="btn-primary" id="btn5" onclick="handleStep(5)">
+        <span class="btn-inner">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg>
+          Continue — Bước 5/5
+        </span>
+      </button>
+    </div>
+
+    <!-- Success -->
+    <div class="success-screen" id="successPanel">
+      <div class="success-anim">
+        <div class="success-circle">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <p class="success-title">Xác Minh Hoàn Tất! 🎉</p>
+      <p class="success-sub">Tuyệt vời! Bạn đã hoàn thành tất cả 5 bước xác minh. File đã được mở khóa và sẵn sàng tải xuống.</p>
+      <div class="badge-row">
+        <span class="badge">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Đã xác minh
+        </span>
+        <span class="badge">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          5/5 hoàn thành
+        </span>
+        <span class="badge">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Chỉ 25 giây
+        </span>
+      </div>
+      <a class="btn-download"
+         href="https://www.mediafire.com/file/zck2sp651uz3qx0/Thien_an_kai_du_1m5.rar/file"
+         id="downloadBtn"
+         target="_blank"
+         rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="8 17 12 21 16 17"/>
+          <line x1="12" y1="12" x2="12" y2="21"/>
+          <path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"/>
+        </svg>
+        Tải Xuống Ngay
+      </a>
+      <span class="download-note">File đã sẵn sàng · Tải xuống miễn phí · Không cần đăng nhập</span>
+    </div>
+
+    <div class="footer-security">
+      <div class="sec-item">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Bảo mật SSL
+      </div>
+      <div class="sec-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Tự động xác minh
+      </div>
+      <div class="sec-item">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        An toàn 100%
+      </div>
+      <div class="sec-item">
+        <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+        Miễn phí hoàn toàn
+      </div>
+    </div>
+  </div>
+
+  <p class="page-footer">© 2025 UnlockDL · Không lưu trữ thông tin cá nhân</p>
+</div>
+
+<script>
+// ================================================================
+// ⚙️ CẤU HÌNH
+// ================================================================
+const CONFIG = {
+  WAIT_SECONDS: 5,
+
+  // 2 direct links xen kẽ nhau theo từng bước (tối đa impression)
+  AD_LINKS: [
+    'https://globalimmaturelunatic.com/xgtge76dn9?key=c1b7efb9d1f679b94395cb79a8b0b6e3',  // Bước 1
+    'https://globalimmaturelunatic.com/w2g7mth1h?key=778090d735fd9fdd2c72c9e4e06cb95c',   // Bước 2
+    'https://globalimmaturelunatic.com/xgtge76dn9?key=c1b7efb9d1f679b94395cb79a8b0b6e3',  // Bước 3
+    '',                                                                                   // Bước 4 (Tải bằng Link4M)
+    'https://globalimmaturelunatic.com/xgtge76dn9?key=c1b7efb9d1f679b94395cb79a8b0b6e3',  // Bước 5
+  ],
+
+  SAVE_PROGRESS: true,
+  STORAGE_KEY: 'unlockdl_v3',
+  LINK4M_API_KEY: '68fcb1cfd51cdd02835428f7',
+
+  // Thời gian (ms) chờ trước khi check adblock lại (sau khi user bấm "Kiểm tra lại")
+  ADBLOCK_RECHECK_DELAY: 1200,
+};
+
+// Check if returning from Link4M (Step 4 completed)
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('step') && urlParams.get('step') === '5') {
+  try {
+    localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify({ currentStep: 5, completed: [1, 2, 3, 4] }));
+  } catch(e) {}
+  // Clear query parameter from address bar for clean UX
+  const cleanUrl = window.location.origin + window.location.pathname;
+  window.history.replaceState({}, document.title, cleanUrl);
+}
+
+// ================================================================
+// ANTI-ADBLOCK ENGINE
+// ================================================================
+let adblockDetected = false;
+
+function detectAdblock() {
+  return new Promise((resolve) => {
+    // Phương pháp 1: Tạo bait element (tên class bị adblock chặn)
+    const bait = document.createElement('div');
+    bait.setAttribute('class', 'ad-banner ads adsbox adsbygoogle ad-placement ad-unit');
+    bait.setAttribute('id', 'ad-detect-bait');
+    bait.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;';
+    document.body.appendChild(bait);
+
+    // Phương pháp 2: Kiểm tra sau một tick để CSS adblock kịp ẩn element
+    setTimeout(() => {
+      const el = document.getElementById('ad-detect-bait');
+      const blocked = !el
+        || el.offsetHeight === 0
+        || el.offsetWidth === 0
+        || el.style.display === 'none'
+        || el.style.visibility === 'hidden'
+        || window.getComputedStyle(el).display === 'none';
+
+      if (el) el.remove();
+      resolve(blocked);
+    }, 150);
+  });
+}
+
+async function checkAdblock() {
+  const overlay = document.getElementById('adblock-overlay');
+  const btn = document.querySelector('.btn-check-again');
+
+  // Loading state
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = `
+      <svg class="spin" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" width="16" height="16">
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+      </svg>
+      Đang kiểm tra...
+    `;
+  }
+
+  // Chờ một chút để adblock kịp xử lý sau khi user tắt
+  await new Promise(r => setTimeout(r, CONFIG.ADBLOCK_RECHECK_DELAY));
+
+  const blocked = await detectAdblock();
+  adblockDetected = blocked;
+
+  if (blocked) {
+    // Vẫn còn adblock
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+        Tôi đã tắt — Kiểm tra lại
+      `;
+    }
+    // Shake animation để báo lỗi
+    const modal = document.querySelector('.adblock-modal');
+    if (modal) {
+      modal.style.animation = 'none';
+      modal.offsetHeight; // reflow
+      modal.style.animation = 'shake 0.4s ease';
+    }
+  } else {
+    // Adblock đã tắt → ẩn overlay
+    overlay.classList.remove('show');
+    adblockDetected = false;
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+        Tôi đã tắt — Kiểm tra lại
+      `;
+    }
+  }
+}
+
+// Thêm animation shake
+const shakeStyle = document.createElement('style');
+shakeStyle.textContent = `
+  @keyframes shake {
+    0%,100%{transform:translateX(0)}
+    15%{transform:translateX(-8px)}
+    30%{transform:translateX(8px)}
+    45%{transform:translateX(-6px)}
+    60%{transform:translateX(6px)}
+    75%{transform:translateX(-3px)}
+    90%{transform:translateX(3px)}
+  }
+`;
+document.head.appendChild(shakeStyle);
+
+// Chạy detect khi trang load xong
+window.addEventListener('load', async () => {
+  const blocked = await detectAdblock();
+  if (blocked) {
+    adblockDetected = true;
+    document.getElementById('adblock-overlay').classList.add('show');
+  }
+});
+
+// ================================================================
+// MAIN LOGIC
+// ================================================================
+const CIRCUMFERENCE = 2 * Math.PI * 19;
+
+let state = initState();
+
+function initState() {
+  if (CONFIG.SAVE_PROGRESS) {
+    try {
+      const saved = localStorage.getItem(CONFIG.STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.currentStep && parsed.completed) return parsed;
+      }
+    } catch(e) {}
+  }
+  return { currentStep: 1, completed: [] };
+}
+
+function saveState() {
+  if (!CONFIG.SAVE_PROGRESS) return;
+  try { localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+function init() {
+  renderProgress();
+  showPanel(state.currentStep);
+}
+
+function renderProgress() {
+  const totalSteps = 5;
+  const done = state.completed.length;
+  const pct = Math.round((done / totalSteps) * 100);
+  document.getElementById('barFill').style.width = pct + '%';
+  document.getElementById('barPct').textContent = pct + '%';
+
+  for (let i = 1; i <= totalSteps; i++) {
+    const dot  = document.getElementById('dot' + i);
+    const lbl  = document.getElementById('lbl' + i);
+    const conn = document.getElementById('conn' + i);
+    dot.className = 'step-dot';
+    lbl.className = 'step-label';
+    if (conn) conn.className = 'step-connector';
+
+    if (state.completed.includes(i)) {
+      dot.className = 'step-dot done';
+      dot.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
+      lbl.className = 'step-label done';
+      lbl.textContent = 'Xong ✓';
+      if (conn) conn.className = 'step-connector done';
+    } else if (i === state.currentStep) {
+      dot.className = 'step-dot active';
+      dot.innerHTML = '<span>' + i + '</span>';
+      lbl.className = 'step-label active';
+      lbl.textContent = 'Đang làm';
+    } else {
+      dot.innerHTML = '<span>' + i + '</span>';
+      lbl.textContent = 'Bước ' + i;
+    }
+  }
+}
+
+function showPanel(step) {
+  for (let i = 1; i <= 5; i++) {
+    document.getElementById('panel' + i).classList.remove('active');
+  }
+  document.getElementById('successPanel').classList.remove('active');
+  if (step > 5) {
+    document.getElementById('successPanel').classList.add('active');
+  } else {
+    document.getElementById('panel' + step).classList.add('active');
+  }
+}
+
+function handleStep(step) {
+  // Chặn nếu vẫn còn adblock
+  if (adblockDetected) {
+    document.getElementById('adblock-overlay').classList.add('show');
+    return;
+  }
+
+  const btn = document.getElementById('btn' + step);
+  btn.disabled = true;
+
+  // Step 4: Link4M API redirection
+  if (step === 4) {
+    // Dev mode helper: Skip Link4M when running offline on file:// protocol
+    if (window.location.protocol === 'file:') {
+      alert("Phát hiện bạn đang chạy offline (file://). Hệ thống tự động chuyển bạn sang Step 5 để thử nghiệm.");
+      state.completed.push(4);
+      state.currentStep = 5;
+      saveState();
+      renderProgress();
+      showPanel(5);
+      return;
+    }
+
+    btn.querySelector('.btn-inner').innerHTML = `
+      <svg class="spin" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" width="16" height="16">
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+      </svg>
+      Đang khởi tạo link xác minh...
+    `;
+
+    const returnUrl = window.location.origin + window.location.pathname + "?step=5";
+    const apiEndpoint = `https://link4m.com/api?api=${CONFIG.LINK4M_API_KEY}&url=${encodeURIComponent(returnUrl)}`;
+    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(apiEndpoint)}`;
+
+    fetch(proxyUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("API Link4M không phản hồi hoặc gặp lỗi CORS");
+        }
+        return response.json();
+      })
+      .then(data => {
+        const shortenedUrl = data.shortenedUrl || data.shortened_url || data.shortLink || data.url;
+        if (shortenedUrl) {
+          window.location.href = shortenedUrl;
+        } else {
+          throw new Error("Không tìm thấy link rút gọn trong kết quả trả về");
+        }
+      })
+      .catch(error => {
+        console.error("Lỗi Link4M:", error);
+        alert("Không thể khởi tạo liên kết xác minh do lỗi kết nối (API Link4M). Vui lòng thử lại.");
+        // Reset button
+        btn.disabled = false;
+        btn.querySelector('.btn-inner').innerHTML = `
+          <svg viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg>
+          Continue — Bước 4/5
+        `;
+      });
+    return;
+  }
+
+  // Các bước Adsterra bình thường (1, 2, 3, 5)
+  btn.querySelector('.btn-inner').innerHTML = `
+    <svg class="spin" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" width="16" height="16">
+      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+    </svg>
+    Đang mở xác minh...
+  `;
+  const adUrl = CONFIG.AD_LINKS[step - 1];
+  if (adUrl) window.open(adUrl, '_blank', 'noopener,noreferrer');
+  setTimeout(() => startCountdown(step), 300);
+}
+
+function startCountdown(step) {
+  const cw  = document.getElementById('cw' + step);
+  const cf  = document.getElementById('cf' + step);
+  const cn  = document.getElementById('cn' + step);
+  const cs  = document.getElementById('cs' + step);
+  const btn = document.getElementById('btn' + step);
+  cw.classList.add('visible');
+  let remaining = CONFIG.WAIT_SECONDS;
+  cf.style.strokeDasharray  = CIRCUMFERENCE;
+  cf.style.strokeDashoffset = 0;
+
+  const tick = setInterval(() => {
+    remaining--;
+    cn.textContent = remaining;
+    cs.textContent = remaining;
+    const offset = CIRCUMFERENCE * (1 - remaining / CONFIG.WAIT_SECONDS);
+    cf.style.strokeDashoffset = offset;
+    if (remaining <= 0) {
+      clearInterval(tick);
+      onCountdownEnd(step, btn, cw);
+    }
+  }, 1000);
+}
+
+function onCountdownEnd(step, btn, cw) {
+  cw.classList.remove('visible');
+  state.completed.push(step);
+  state.currentStep = step + 1;
+  saveState();
+  btn.style.background = 'linear-gradient(135deg, #00e5a0, #059669)';
+  btn.querySelector('.btn-inner').innerHTML = `
+    <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+    Hoàn thành! Chuyển bước tiếp...
+  `;
+  renderProgress();
+  setTimeout(() => {
+    showPanel(state.currentStep);
+    renderProgress();
+  }, 600);
+}
+
+init();
+</script>
+
+<!-- [ADSTERRA] Script 2 -->
+<script src="https://globalimmaturelunatic.com/91/e2/97/91e297ea0b233d10e7c83404c5db6cf1.js"></script>
+
+</body>
+</html>

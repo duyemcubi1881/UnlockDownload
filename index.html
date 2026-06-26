@@ -993,7 +993,7 @@ function handleStep(step) {
       Đang khởi tạo link xác minh...
     `;
     const returnUrl = window.location.origin + window.location.pathname + "?step=5";
-    const apiEndpoint = `https://link4m.com/api?api=${CONFIG.LINK4M_API_KEY}&url=${encodeURIComponent(returnUrl)}`;
+    const apiEndpoint = `https://link4m.co/api-shorten/v2?api=${CONFIG.LINK4M_API_KEY}&url=${encodeURIComponent(returnUrl)}`;
     const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(apiEndpoint)}`;
     fetch(proxyUrl)
       .then(response => {
